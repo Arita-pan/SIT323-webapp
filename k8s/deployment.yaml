@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          # Replace YOUR_PROJECT_ID and YOUR_REGION with your actual values
-          image: YOUR_REGION-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:latest
+          image: australia-southeast1-docker.pkg.dev/sit323-26t1-kitayaso-309b8b4/sit323-webapp/webapp:latest
           ports:
             - containerPort: 80
           volumeMounts:
