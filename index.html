@@ -3,52 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cloud-Native Web App</title>
+  <title>SIT323 Cloud Native App</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f5f5f5;
+      color: #333;
     }
-    h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 0.5rem; }
-    p { color: #94a3b8; margin-bottom: 2rem; }
-    .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-    }
-    .badge {
-      display: inline-block;
-      background: #0ea5e9;
-      color: #fff;
-      border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.8rem;
-      margin: 0.25rem;
-    }
-    .status { margin-top: 1.5rem; font-size: 0.85rem; color: #64748b; }
+    h1 { font-size: 1.6rem; margin-bottom: 5px; }
+    h2 { font-size: 1.1rem; margin-top: 20px; }
+    p { font-size: 0.95rem; color: #555; }
+    hr { border: none; border-top: 1px solid #ccc; margin: 20px 0; }
+    table { border-collapse: collapse; width: 100%; max-width: 500px; font-size: 0.9rem; }
+    td, th { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+    th { background-color: #e8e8e8; }
+    .status { color: green; font-weight: bold; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>☁️ Cloud-Native App</h1>
-    <p>Deployed on GKE · SIT323/SIT737 Stage 1</p>
-    <span class="badge">Docker</span>
-    <span class="badge">GKE</span>
-    <span class="badge">Cloud Build</span>
-    <span class="badge">Artifact Registry</span>
-    <p class="status">Running successfully in Kubernetes pod</p>
-  </div>
+  <h1>SIT323 - Cloud Native Application Development</h1>
+  <p>Stage 1 Deployment - Simple Web Application</p>
+  <hr>
+  <h2>Deployment Info</h2>
+  <table>
+    <tr><th>Component</th><th>Details</th></tr>
+    <tr><td>Platform</td><td>Google Kubernetes Engine (GKE)</td></tr>
+    <tr><td>Container</td><td>Docker (nginx)</td></tr>
+    <tr><td>Registry</td><td>Google Artifact Registry</td></tr>
+    <tr><td>CI/CD</td><td>Google Cloud Build</td></tr>
+    <tr><td>Storage</td><td>Persistent Volume (1Gi)</td></tr>
+    <tr><td>Status</td><td><span class="status">Running</span></td></tr>
+  </table>
+  <hr>
+  <p>Student ID: S223139222</p>
+  <p>Unit: SIT323 Cloud Native Application Development</p>
 </body>
 </html>
