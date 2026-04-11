@@ -1,0 +1,37 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/webapp:${SHORT_SHA}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/webapp:latest'
+      - '.'
+
+  # Step 2: Push the image to Artifact Registry (both tags)
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/webapp'
+
+  # Step 3: Deploy to GKE
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'set'
+      - 'image'
+      - 'deployment/webapp-deployment'
+      - 'webapp=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/webapp:${SHORT_SHA}'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=${_CLUSTER_ZONE}'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
+
+substitutions:
+  _REGION: australia-southeast1       # Change to your GCP region
+  _REPO_NAME: webapp-repo             # Your Artifact Registry repo name
+  _CLUSTER_NAME: webapp-cluster       # Your GKE cluster name
+  _CLUSTER_ZONE: australia-southeast1  # Your GKE cluster zone
+
+options:
+  logging: CLOUD_LOGGING_ONLY

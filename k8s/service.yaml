@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  # Use ClusterIP for internal access only (more secure)
+  # Change to LoadBalancer only if you need external access for demo/testing
+  type: ClusterIP

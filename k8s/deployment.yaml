@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          # Replace YOUR_PROJECT_ID and YOUR_REGION with your actual values
+          image: YOUR_REGION-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: persistent-data
+              mountPath: /usr/share/nginx/data
+      volumes:
+        - name: persistent-data
+          persistentVolumeClaim:
+            claimName: webapp-pvc
