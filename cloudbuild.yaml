@@ -28,10 +28,10 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
 
 substitutions:
-  _REGION: australia-southeast1       # Change to your GCP region
-  _REPO_NAME: webapp-repo             # Your Artifact Registry repo name
-  _CLUSTER_NAME: webapp-cluster       # Your GKE cluster name
-  _CLUSTER_ZONE: australia-southeast1  # Your GKE cluster zone
+  _REGION: australia-southeast1  
+  _REPO_NAME: sit323-webapp            
+  _CLUSTER_NAME: sit323-webapp      
+  _CLUSTER_ZONE: australia-southeast1-a
 
 options:
   logging: CLOUD_LOGGING_ONLY
