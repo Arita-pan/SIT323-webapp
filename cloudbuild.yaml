@@ -40,7 +40,7 @@ steps:
 
 substitutions:
   _DOCKERHUB_USERNAME: aritapan
-  _DOCKERHUB_PASSWORD: 112233456
+  _DOCKERHUB_PASSWORD: '112233456'
 
 options:
   logging: CLOUD_LOGGING_ONLY
