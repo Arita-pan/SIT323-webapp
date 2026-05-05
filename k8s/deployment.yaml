@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: image: aritapan/sit323-webapp:latest
+          image: aritapan/sit323-webapp:latest
           ports:
             - containerPort: 80
           volumeMounts:
