@@ -38,10 +38,3 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
             failureThreshold: 3
-          volumeMounts:
-            - name: persistent-data
-              mountPath: /usr/share/nginx/data
-      volumes:
-        - name: persistent-data
-          persistentVolumeClaim:
-            claimName: webapp-pvc
