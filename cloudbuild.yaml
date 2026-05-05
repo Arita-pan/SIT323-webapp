@@ -4,7 +4,6 @@ steps:
     args:
       - '-c'
       - 'echo "${_DOCKERHUB_PASSWORD}" | docker login -u "${_DOCKERHUB_USERNAME}" --password-stdin'
-
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -13,21 +12,11 @@ steps:
       - '-t'
       - 'aritapan/sit323-webapp:$SHORT_SHA'
       - '.'
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '--all-tags', 'aritapan/sit323-webapp']
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'tag'
-      - 'aritapan/sit323-webapp:latest'
-      - 'australia-southeast1-docker.pkg.dev/$PROJECT_ID/sit323-webapp/webapp:latest'
-
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'australia-southeast1-docker.pkg.dev/$PROJECT_ID/sit323-webapp/webapp:latest'
-
+      - '--all-tags'
+      - 'aritapan/sit323-webapp'
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'set'
@@ -37,10 +26,8 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_REGION=australia-southeast1'
       - 'CLOUDSDK_CONTAINER_CLUSTER=sit323-webapp'
-
 substitutions:
   _DOCKERHUB_USERNAME: aritapan
   _DOCKERHUB_PASSWORD: 'dckr_pat_Wn1wXN4U8Z7UkfG7tREKQmun1Ps'
-
 options:
   logging: NONE
