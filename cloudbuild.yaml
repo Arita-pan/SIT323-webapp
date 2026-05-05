@@ -17,15 +17,6 @@ steps:
       - 'push'
       - '--all-tags'
       - 'aritapan/sit323-webapp'
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-      - 'set'
-      - 'image'
-      - 'deployment/webapp-deployment'
-      - 'webapp=aritapan/sit323-webapp:latest'
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=australia-southeast1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=sit323-webapp'
 substitutions:
   _DOCKERHUB_USERNAME: aritapan
   _DOCKERHUB_PASSWORD: 'dckr_pat_Wn1wXN4U8Z7UkfG7tREKQmun1Ps'
