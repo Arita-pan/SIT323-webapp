@@ -1,12 +1,10 @@
 steps:
-  # Step 1: Login to Docker Hub
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
     args:
       - '-c'
       - 'echo "${_DOCKERHUB_PASSWORD}" | docker login -u "${_DOCKERHUB_USERNAME}" --password-stdin'
 
-  # Step 2: Build image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -16,22 +14,20 @@ steps:
       - 'aritapan/sit323-webapp:$SHORT_SHA'
       - '.'
 
-  # Step 3: Push to Docker Hub
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '--all-tags', 'aritapan/sit323-webapp']
 
-  # Step 4: Tag and push to Artifact Registry (evidence)
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'tag'
       - 'aritapan/sit323-webapp:latest'
       - 'australia-southeast1-docker.pkg.dev/$PROJECT_ID/sit323-webapp/webapp:latest'
+
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - 'australia-southeast1-docker.pkg.dev/$PROJECT_ID/sit323-webapp/webapp:latest'
 
-  # Step 5: Deploy to GKE
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'set'
@@ -48,4 +44,4 @@ substitutions:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-EOF
+ENDBUILD
