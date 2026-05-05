@@ -43,4 +43,4 @@ substitutions:
   _DOCKERHUB_PASSWORD: '112233456'
 
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: NONE
