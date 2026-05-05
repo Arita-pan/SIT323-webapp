@@ -40,7 +40,7 @@ steps:
 
 substitutions:
   _DOCKERHUB_USERNAME: aritapan
-  _DOCKERHUB_PASSWORD: '112233456'
+  _DOCKERHUB_PASSWORD: 'dckr_pat_Wn1wXN4U8Z7UkfG7tREKQmun1Ps'
 
 options:
   logging: NONE
